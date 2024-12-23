@@ -1,6 +1,6 @@
 Buyany
 
-Buyany is a comprehensive system designed to streamline the process of buying and selling products. It incorporates advanced features such as JSON Web Tokens (JWT) and refresh tokens to ensure secure authentication and authorization.
+Buyany is a comprehensive system designed to streamline the process of buying and selling tech products. It incorporates advanced features such as JSON Web Tokens (JWT) and refresh tokens to ensure secure authentication and authorization.
 
 Key Features
 
