@@ -13,7 +13,7 @@ import {
 router.post("/", async (req, res) => {
   const { phoneNumber, password } = req.body;
 
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const user = await User.findOne({ where: { phoneNumber } });
 

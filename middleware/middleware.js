@@ -8,8 +8,6 @@ const Middleware = (req, res, next) => {
   }
   const token = authHeader.split(" ")[1];
 
-  console.log(token);
-
   if (!token) {
     return res.status(401).json({ message: "No token, authorization denied" });
   }

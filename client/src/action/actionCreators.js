@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../components/auth/authProvider";
 import * as actions from "./types/types";
+import { useDispatch, useSelector } from "react-redux";
 
 // Register Async Action
 export const register = createAsyncThunk(
@@ -46,7 +47,64 @@ export const profile = createAsyncThunk(
   }
 );
 
+//getting all users
+export const fetchUsers = createAsyncThunk(
+  actions.FETCH_USERS,
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/users");
+      return response.data;
+    } catch (error) {
+      console.error("Fetch image Error:", error);
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
 // Logout Action Creator (Sync Action)
 export const logout = () => ({
   type: actions.LOGOUT,
 });
+
+//saving images
+export const uploadImage = createAsyncThunk(
+  actions.SAVE_POST,
+  async (ImageData, { rejectWithValue }) => {
+    try {
+      const response = await api.post("/savePost", ImageData);
+      return response.data;
+    } catch (error) {
+      console.error("Image save Error:", error); // Log the error for debugging
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+//getting posts
+export const fetchPosts = createAsyncThunk(
+  actions.FETCH_POST,
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/fetchPost");
+      console.log("imaged fetch", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Fetch image Error:", error); // Log the error for debugging
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+//getting messages
+export const fetchMessages = createAsyncThunk(
+  actions.FETCH_MESSAGES,
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/messages");
+      return response.data;
+    } catch (error) {
+      console.error("Fetch image Error:", error);
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);

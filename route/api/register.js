@@ -7,7 +7,8 @@ const SALTROUNDS = 10;
 import User from "../../model/User.js";
 
 router.post("/", (req, res) => {
-  const { number, password } = req.body;
+  const { userRole, phoneNumber, password } = req.body;
+
   //save into the database
   try {
     bcrypt.genSalt(SALTROUNDS, (err, salt) => {
@@ -17,7 +18,8 @@ router.post("/", (req, res) => {
         if (err) res.json({ err: err.message });
 
         await User.create({
-          phoneNumber: number,
+          userRole: userRole,
+          phoneNumber: phoneNumber,
           password: hashedpassword,
         })
           .then(() => {

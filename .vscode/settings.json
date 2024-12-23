@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+
+    ],
+    "json.validate.enable": true,
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    }
+}

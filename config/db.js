@@ -1,9 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("auth", "root", "code", {
+const sequelize = new Sequelize("buyany", "postgres", "code", {
   host: "localhost",
-  dialect: "mysql",
-  port: 3306, // Default MySQL port
+  dialect: "postgres",
   logging: false,
 });
 

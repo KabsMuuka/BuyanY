@@ -5,7 +5,7 @@ import middleware from "../../middleware/middleware.js";
 
 router.get("/", middleware, async (req, res) => {
   try {
-    console.log(req.user);
+    // console.log(req.user);
     const user = await User.findByPk(req.user.id);
     if (!user) {
       return res.status(404).json({ err: "user not found" });
