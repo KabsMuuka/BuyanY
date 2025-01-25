@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../action/actionCreators";
+import { login } from "../../redux/action/actionCreators";
 
 const signIn = () => {
   const navigate = useNavigate();

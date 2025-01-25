@@ -1,32 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchPosts } from "../action/actionCreators";
-import { useEffect } from "react";
-
+import { fetchPosts } from "../../redux/action/actionCreators";
+import { useEffect, useState } from "react";
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const [usersearch, setUsersearch] = useState("");
 
+  const dispatch = useDispatch();
   const { isAuthenticated, accessToken } = useSelector((state) => state.auth);
   const posts = useSelector((state) => state.fetchPost);
-
-  console.log(posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  const addToCart = () => {
-    aler("gadget added to cart");
-  };
-  const buyThis = () => {};
-
-  console.log("isAuthenticated", isAuthenticated);
-  console.log("accesToken", accessToken);
+  // console.log("isAuthenticated", isAuthenticated);
+  // console.log("accesToken", accessToken);
 
   return (
     <>
-      {isAuthenticated ? (
+      {posts ? (
         <div>
+          {/* search input */}
+
+          {/* search input */}
+
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 shadow">
             {posts && posts.image && posts.image.length > 0 ? (
               posts.image.map((img) => (
@@ -49,7 +46,7 @@ const Dashboard = () => {
                     <p className="text-sm">{img.userNumber}</p>
                   </div>
 
-                  <button onClick={addToCart} className="text-blue-600 mt-2">
+                  <button onClick={""} className="text-blue-600 mt-2">
                     Watch list
                   </button>
 
@@ -67,13 +64,13 @@ const Dashboard = () => {
             ) : (
               <p className="text-center w-full col-span-full">No Posts found</p>
             )}
-          </div>{" "}
+          </div>
         </div>
       ) : (
         <div>
           <p className="text-center">Please login </p>
 
-          <Link to={"/"} className="bg-red-400 w-20 p-1 rounded-md mt-3">
+          <Link to={"/login"} className="bg-red-400 w-20 p-1 rounded-md mt-3">
             back
           </Link>
         </div>

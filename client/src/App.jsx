@@ -16,16 +16,17 @@ import ListConversations from "./components/messaging/ListConversations.jsx";
 // A separate component for content that depends on the router
 function AppContent() {
   const location = useLocation();
-  const excludeNavbarPaths = ["/", "/register"];
+  const excludeNavbarPaths = ["/login", "/register"];
+
   const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 
   return (
     <>
       {showNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/sell" element={<Sell />} />
         <Route path="/view" element={<View />} />
         <Route path="/profile" element={<Profile />} />

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { profile } from "../action/actionCreators";
+import { profile } from "../../redux/action/actionCreators";
 
 const userProfile = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const userProfile = () => {
     <>
       {isAuthenticated ? (
         <div>
-          <Link className="flex" to={"/dashboard"}>
+          <Link className="flex" to={"/"}>
             <img className="w-4" src="/back.png" alt="back button" />
           </Link>
 

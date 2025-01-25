@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../action/actionCreators";
-import { persistor } from "../store/store.js";
+import { logout } from "../../redux/action/actionCreators.js";
+import { persistor } from "../../redux/store/store.js";
 
 const navbar = () => {
   const dispatch = useDispatch();
@@ -11,14 +11,14 @@ const navbar = () => {
     dispatch(logout());
     persistor.purge();
     console.log("User logged out, persisted data cleared.");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <Link to={"/dashboard"} className="btn btn-ghost text-xl">
+          <Link to={"/"} className="btn btn-ghost text-xl">
             Buy anY
           </Link>
 

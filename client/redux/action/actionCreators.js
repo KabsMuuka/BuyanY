@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../components/auth/authProvider";
+import api from "../../src/components/auth/authProvider";
 import * as actions from "./types/types";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -39,6 +39,7 @@ export const profile = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get("/me");
+      console.log(response);
       return response.data; // Ensure this is the profile data you want to store
     } catch (error) {
       console.error("Profile Error:", error); // Log the error for debugging

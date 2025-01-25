@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { useSelector } from "react-redux";
-import { profile } from "../../action/actionCreators";
-import { useDispatch } from "react-redux";
-import { fetchPosts } from "../../action/actionCreators";
-import { fetchMessages } from "../../action/actionCreators";
-import { fetchUsers } from "../../action/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import {
+  fetchUsers,
+  fetchMessages,
+  fetchPosts,
+  profile,
+} from "../../../redux/action/actionCreators";
 
 import io, { connect } from "socket.io-client";
 const socket = io.connect("http://localhost:4000");

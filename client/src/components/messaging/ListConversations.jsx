@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { profile } from "../../action/actionCreators";
-import { fetchMessages } from "../../action/actionCreators";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { profile, fetchMessages } from "../../../redux/action/actionCreators";
+
 function MessagesideBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -15,6 +15,8 @@ const Middleware = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.SECRETKEY);
 
+    console.log("decoded: ", decoded);
+
     req.user = decoded; // Store user information from the token in req.user to avoid reauthenticating a user, each time, they access protected routes
     next(); // proceed to the next route handler
   } catch (error) {

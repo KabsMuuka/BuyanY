@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { uploadImage } from "../action/actionCreators";
-import { profile } from "../action/actionCreators";
+import { uploadImage } from "../../redux/action/actionCreators";
+import { profile } from "../../redux/action/actionCreators";
 
 const sellProduct = () => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const sellProduct = () => {
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
           <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
             {/* Back Button */}
-            <Link className="flex items-center mb-4" to={"/dashboard"}>
+            <Link className="flex items-center mb-4" to={"/"}>
               <img className="w-4" src="/back.png" alt="back button" />
               <span className="ml-2 text-sm text-blue-500">
                 Back to Dashboard

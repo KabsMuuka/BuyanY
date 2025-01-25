@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/action/actionCreators";
+import { register } from "../action/actionCreators";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [userRole, setUserRole] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const payload = {
-    userRole,
+    userRole: "seller",
     phoneNumber,
     password,
   };
 
   const handUserCredentials = async () => {
-    if (!userRole || !phoneNumber || !password) {
+    if (!phoneNumber || !password) {
       alert("All fields are required!");
     }
     dispatch(register(payload));
@@ -31,24 +30,6 @@ const Register = () => {
       <div className="flex items-center flex-col p-8">
         <p className="font-bold text-2xl"> Register</p>
         <form className="shadow-md p-3 rounded-sm">
-          <div className="shadow-md p-3 rounded-md mb-2">
-            <select
-              className="font-mono text-2xl rounded-md"
-              value={userRole}
-              onChange={(e) => setUserRole(e.target.value)}
-            >
-              <option value="" disabled>
-                Choose a role
-              </option>
-              <option className="font-bold" value="Buyer">
-                Buyer
-              </option>
-              <option className="font-bold" value="Seller">
-                Seller
-              </option>
-            </select>
-          </div>
-
           <label className="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

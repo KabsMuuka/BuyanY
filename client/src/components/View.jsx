@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../action/actionCreators";
-import { useNavigate } from "react-router-dom";
-import { profile } from "../action/actionCreators";
+import { fetchPosts } from "../../redux/action/actionCreators";
+import { Link, useNavigate } from "react-router-dom";
+import { profile } from "../../redux/action/actionCreators";
+
 const view = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,9 +39,8 @@ const view = () => {
   console.log("sellerId", currentUser);
   return (
     <>
-      {isAuthenticated ? (
+      {post ? (
         <div>
-          <h1>Show click product</h1>
           {clickedItem ? (
             clickedItem.map((img) => {
               return (
@@ -75,10 +75,10 @@ const view = () => {
                     </label>
                     <p className="text-gray-700 font-medium">{img.location} </p>
 
-                    {/* Contact Seller Section if buyer hide contact*/}
+                    {/* Contact Seller, if buyer hide contact*/}
                     {currentUser.userRole === "Seller" ? (
-                      <p> </p>
-                    ) : (
+                      <p> </p> //blank
+                    ) : isAuthenticated ? ( //if user is auth show link
                       <button
                         onClick={() => {
                           navigate("/chatroom", {
@@ -89,14 +89,13 @@ const view = () => {
                       >
                         Contact the seller
                       </button>
+                    ) : (
+                      <Link to={"/login"}>
+                        <p className="underline">
+                          Please login to contact seller
+                        </p>
+                      </Link>
                     )}
-
-                    {/* Buy Button */}
-                    <div>
-                      <button className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md shadow-md transition">
-                        Buy
-                      </button>
-                    </div>
                   </div>
                 </div>
               );
